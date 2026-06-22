@@ -1,0 +1,5 @@
+role WHO_Admin
+	modelPermission: read
+
+	annotation PBI_Id = 39b67c4ed1644adfb85aaef27c1ad63d
+
