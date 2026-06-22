@@ -140,7 +140,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Positive Cases by Age Group and Gender'"
+                  "Value": "'Casos Positivos por Faixa Etária e Gênero'"
                 }
               }
             }

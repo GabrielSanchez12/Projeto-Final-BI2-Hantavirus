@@ -77,7 +77,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Positive Cases by Exposure Type'"
+                  "Value": "'Casos Positivos por Tipo de Exposição'"
                 }
               }
             }

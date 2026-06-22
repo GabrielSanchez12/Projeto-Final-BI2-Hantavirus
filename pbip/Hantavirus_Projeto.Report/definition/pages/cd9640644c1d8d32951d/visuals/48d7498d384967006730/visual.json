@@ -109,7 +109,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Positive Cases by Hantavirus Strain'"
+                  "Value": "'Casos Positivos por Tipo de Hantavírus'"
                 }
               }
             }
