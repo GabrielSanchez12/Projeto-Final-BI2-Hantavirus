@@ -1,0 +1,7 @@
+role WHO_EU_Manager
+	modelPermission: read
+
+	tablePermission Dim_Region = Dim_Region[Region] = "Europe"
+
+	annotation PBI_Id = 3615f4f07e8b4c96b38b61d3a02e09a1
+
