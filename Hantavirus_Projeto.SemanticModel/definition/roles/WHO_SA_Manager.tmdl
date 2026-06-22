@@ -1,7 +1,0 @@
-role WHO_SA_Manager
-	modelPermission: read
-
-	tablePermission Dim_Region = Dim_Region[Region] = "South America"
-
-	annotation PBI_Id = 2b4e0612781e440885f8c62053fd238d
-

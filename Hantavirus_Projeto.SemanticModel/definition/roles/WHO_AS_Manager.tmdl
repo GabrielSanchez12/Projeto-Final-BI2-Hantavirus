@@ -1,9 +1,0 @@
-role WHO_AS_Manager
-	modelPermission: read
-
-	tablePermission Dim_Region = Dim_Region[Region] = "Asia"
-
-	tablePermission Dim_Date
-
-	annotation PBI_Id = fde2d434307c4ecf8aaefcf6745b06db
-
