@@ -1,0 +1,123 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.0.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY25SU10",
+      "reportVersionAtImport": {
+        "visual": "2.1.0",
+        "report": "3.0.0",
+        "page": "2.3.0"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "AccessibleTidal",
+      "reportVersionAtImport": {
+        "visual": "2.1.0",
+        "report": "3.0.0",
+        "page": "2.3.0"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY25SU10",
+          "path": "BaseThemes/CY25SU10.json",
+          "type": "BaseTheme"
+        },
+        {
+          "name": "AccessibleTidal",
+          "path": "BuiltInThemes/AccessibleTidal.json",
+          "type": "CustomTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "worldmap8733334023323444.png",
+          "path": "worldmap8733334023323444.png",
+          "type": "Image"
+        },
+        {
+          "name": "WHO_logo08434736145614974.png",
+          "path": "WHO_logo08434736145614974.png",
+          "type": "Image"
+        },
+        {
+          "name": "beaker9393794830461086.png",
+          "path": "beaker9393794830461086.png",
+          "type": "Image"
+        },
+        {
+          "name": "virus511949249683625.png",
+          "path": "virus511949249683625.png",
+          "type": "Image"
+        },
+        {
+          "name": "danger23749023585265705.png",
+          "path": "danger23749023585265705.png",
+          "type": "Image"
+        },
+        {
+          "name": "percent8968308670302201.png",
+          "path": "percent8968308670302201.png",
+          "type": "Image"
+        },
+        {
+          "name": "mask3151050121744249.png",
+          "path": "mask3151050121744249.png",
+          "type": "Image"
+        },
+        {
+          "name": "male_female21555240813125298.png",
+          "path": "male_female21555240813125298.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}
