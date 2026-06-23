@@ -55,7 +55,7 @@ data/
 pbip/
 └── Arquivos do projeto Power BI
 apresentacao/
-└── slides.pdf
+└── Apresentação_Hantavirus.pdf
 ```
 
 ---
@@ -75,6 +75,10 @@ apresentacao/
 - Power Query
 - DAX
 - Modelagem Dimensional (Star Schema)
+
+---
+
+Observação: Embora o dataset apresente algumas distribuições bastante equilibradas entre categorias, todas as análises e visualizações foram desenvolvidas com base nos dados disponibilizados, respeitando integralmente sua estrutura e características.
 
 ---
 
