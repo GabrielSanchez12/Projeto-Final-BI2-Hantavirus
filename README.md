@@ -52,6 +52,7 @@ docs/
 └── decisoes_de_modelagem.md
 data/
 └── README.md
+├── hantavirus_detection_dataset.csv
 pbip/
 └── Arquivos do projeto Power BI
 apresentacao/
