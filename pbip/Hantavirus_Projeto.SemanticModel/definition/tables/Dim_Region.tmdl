@@ -1,0 +1,36 @@
+table Dim_Region
+	lineageTag: 40c65e1b-2c60-4d65-a433-4c53ac8b0539
+
+	column Região
+		dataType: string
+		lineageTag: 322d7176-b694-45e3-a361-6f4ffd3a8ccd
+		summarizeBy: none
+		sourceColumn: Região
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Region = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\BI2_ProjetoFinal_Hantavirus\data\hantavirus_detection_dataset.csv"),[Delimiter=",", Columns=24, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Patient_ID", type text}, {"Age", Int64.Type}, {"Gender", type text}, {"Region", type text}, {"Hantavirus_Positive", Int64.Type}, {"Hantavirus_Type", type text}, {"Symptoms", type text}, {"Symptom_Count", Int64.Type}, {"Exposure_Type", type text}, {"Sample_Date", type date}, {"Disease_Onset_Date", type text}, {"WBC_Count_K/uL", type number}, {"Platelet_Count_K/uL", type number}, {"CRP_mg/L", type number}, {"ALT_U/L", type number}, {"AST_U/L", type number}, {"BUN_mg/dL", type number}, {"Creatinine_mg/dL", type number}, {"Disease_Severity", type text}, {"WBC_Platelet_Ratio", type number}, {"Creatinine_BUN_Ratio", type number}, {"Liver_Injury_Score", type number}, {"Immunological_Risk", type text}, {"Renal_Risk", type text}}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Changed Type", "Symptoms", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), {"Symptoms.1", "Symptoms.2", "Symptoms.3", "Symptoms.4", "Symptoms.5"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Symptoms.1", type text}, {"Symptoms.2", type text}, {"Symptoms.3", type text}, {"Symptoms.4", type text}, {"Symptoms.5", type text}}),
+				    #"Replaced Errors" = Table.ReplaceErrorValues(#"Changed Type1", {{"Symptoms.1", null}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Replaced Errors","",null,Replacer.ReplaceValue,{"Symptoms.1"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Replaced Value",{{"Disease_Onset_Date", type date}}),
+				    #"Replaced Errors1" = Table.ReplaceErrorValues(#"Changed Type2", {{"Disease_Onset_Date", null}}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Replaced Errors1", "Age_Group", each if [Age] < 18 then "Criança" else if [Age] < 35 then "Adulto Jovem" else if [Age] < 60 then "Adulto" else "Idoso"),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Added Conditional Column",{{"Age_Group", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type3",{"Region"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Duplicates",{{"Region", "Região"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

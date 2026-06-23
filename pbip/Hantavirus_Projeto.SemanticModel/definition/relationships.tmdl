@@ -1,0 +1,30 @@
+relationship aa314352-c791-4c5a-88a1-7d44579f418c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_Hantavirus.Disease_Onset_Date
+	toColumn: LocalDateTable_ca82d097-ee56-482e-9298-69e78746cb9e.Date
+
+relationship 2c201399-6db0-407a-81f4-d46b8356342b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Date.Sample_Date
+	toColumn: LocalDateTable_61dab37c-4911-4999-be9b-d33a05c7f099.Date
+
+relationship 4320a274-80fa-ad31-78b7-fae21fe31f53
+	fromColumn: Fact_Hantavirus.Patient_ID
+	toColumn: Dim_Patient.Patient_ID
+
+relationship c0e640b3-bc9d-5393-471b-6417834b9d36
+	fromColumn: Fact_Hantavirus.Sample_Date
+	toColumn: Dim_Date.Sample_Date
+
+relationship d641bf07-4c0e-7583-2f2d-bed5657977b8
+	fromColumn: Fact_Hantavirus.Exposure_Type
+	toColumn: Dim_Exposure.Exposure_Type
+
+relationship ab7d14db-d53a-a2b1-7b98-9b77fe0ad7b4
+	fromColumn: Fact_Hantavirus.Region
+	toColumn: Dim_Region.Região
+
+relationship 5fb3d667-33cc-b42b-d38a-3e6a5de9c7b9
+	fromColumn: Fact_Hantavirus.Hantavirus_Type
+	toColumn: Dim_Virus.Hantavirus_Type
+

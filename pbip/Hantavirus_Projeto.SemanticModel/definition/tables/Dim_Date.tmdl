@@ -1,0 +1,107 @@
+table Dim_Date
+	lineageTag: db5e959c-fab8-45c5-b674-c27cb356cdb9
+
+	column Sample_Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 608aa961-29aa-4fd9-ba0e-90838d57a4fb
+		summarizeBy: none
+		sourceColumn: Sample_Date
+
+		variation Variation
+			isDefault
+			relationship: 2c201399-6db0-407a-81f4-d46b8356342b
+			defaultHierarchy: LocalDateTable_61dab37c-4911-4999-be9b-d33a05c7f099.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 989da000-e19a-4071-bfed-1ebde1409246
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: d2da821a-5699-499c-b5ab-1c10781efdd8
+		summarizeBy: sum
+		sourceColumn: Month Number
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		dataType: string
+		lineageTag: 00de74ca-d0e2-493f-865f-234a8070b8dd
+		summarizeBy: none
+		sourceColumn: Month Name
+		sortByColumn: 'Month Number'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		dataType: string
+		lineageTag: 9fa34969-8fbb-41f2-9d60-1b412f0ec536
+		summarizeBy: none
+		sourceColumn: YearMonth
+		sortByColumn: YearMonthSort
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonthSort
+		dataType: string
+		lineageTag: 3547b610-9b77-400c-8943-ef631f63e560
+		summarizeBy: none
+		sourceColumn: YearMonthSort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Date = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\BI2_ProjetoFinal_Hantavirus\data\hantavirus_detection_dataset.csv"),[Delimiter=",", Columns=24, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Patient_ID", type text}, {"Age", Int64.Type}, {"Gender", type text}, {"Region", type text}, {"Hantavirus_Positive", Int64.Type}, {"Hantavirus_Type", type text}, {"Symptoms", type text}, {"Symptom_Count", Int64.Type}, {"Exposure_Type", type text}, {"Sample_Date", type date}, {"Disease_Onset_Date", type text}, {"WBC_Count_K/uL", type number}, {"Platelet_Count_K/uL", type number}, {"CRP_mg/L", type number}, {"ALT_U/L", type number}, {"AST_U/L", type number}, {"BUN_mg/dL", type number}, {"Creatinine_mg/dL", type number}, {"Disease_Severity", type text}, {"WBC_Platelet_Ratio", type number}, {"Creatinine_BUN_Ratio", type number}, {"Liver_Injury_Score", type number}, {"Immunological_Risk", type text}, {"Renal_Risk", type text}}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Changed Type", "Symptoms", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), {"Symptoms.1", "Symptoms.2", "Symptoms.3", "Symptoms.4", "Symptoms.5"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Symptoms.1", type text}, {"Symptoms.2", type text}, {"Symptoms.3", type text}, {"Symptoms.4", type text}, {"Symptoms.5", type text}}),
+				    #"Replaced Errors" = Table.ReplaceErrorValues(#"Changed Type1", {{"Symptoms.1", null}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Replaced Errors","",null,Replacer.ReplaceValue,{"Symptoms.1"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Replaced Value",{{"Disease_Onset_Date", type date}}),
+				    #"Replaced Errors1" = Table.ReplaceErrorValues(#"Changed Type2", {{"Disease_Onset_Date", null}}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Replaced Errors1", "Age_Group", each if [Age] < 18 then "Criança" else if [Age] < 35 then "Adulto Jovem" else if [Age] < 60 then "Adulto" else "Idoso"),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Added Conditional Column",{{"Age_Group", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type3",{"Sample_Date"}),
+				    #"Inserted Year" = Table.AddColumn(#"Removed Other Columns", "Year", each Date.Year([Sample_Date]), Int64.Type),
+				    #"Inserted Quarter" = Table.AddColumn(#"Inserted Year", "Quarter", each Date.QuarterOfYear([Sample_Date]), Int64.Type),
+				    #"Inserted Month" = Table.AddColumn(#"Inserted Quarter", "Month", each Date.Month([Sample_Date]), Int64.Type),
+				    #"Inserted Month Name" = Table.AddColumn(#"Inserted Month", "Month Name", each Date.MonthName([Sample_Date]), type text),
+				    #"Removed Columns" = Table.RemoveColumns(#"Inserted Month Name",{"Quarter"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each true),
+				    #"Removed Duplicates" = Table.Distinct(#"Filtered Rows", {"Sample_Date"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Removed Duplicates",{"Sample_Date"}),
+				    #"Inserted Year1" = Table.AddColumn(#"Removed Other Columns1", "Year", each Date.Year([Sample_Date]), Int64.Type),
+				    #"Inserted Month1" = Table.AddColumn(#"Inserted Year1", "Month", each Date.Month([Sample_Date]), Int64.Type),
+				    #"Inserted Month Name1" = Table.AddColumn(#"Inserted Month1", "Month Name", each Date.MonthName([Sample_Date]), type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Month Name1",{{"Month", "Month Number"}}),
+				    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "YearMonth", each Date.ToText([Sample_Date], "MMM yyyy")),
+				    #"Added Custom1" = Table.AddColumn(#"Added Custom", "YearMonthSort", each Date.Year([Sample_Date]) * 100 + Date.Month([Sample_Date])),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Added Custom1",{{"Year", "Ano"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

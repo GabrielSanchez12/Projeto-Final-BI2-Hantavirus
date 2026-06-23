@@ -1,0 +1,315 @@
+table Fact_Hantavirus
+	lineageTag: 6b7bb078-d4ed-44d6-bd71-f31267e7f235
+
+	column Patient_ID
+		dataType: string
+		lineageTag: 4b6aef44-5f8b-4232-b7de-ae7db476cf12
+		summarizeBy: none
+		sourceColumn: Patient_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 60d24e4c-d279-412c-9400-be4a45b0fd66
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hantavirus_Positive
+		dataType: int64
+		formatString: 0
+		lineageTag: 0f1ba14b-f954-41a7-a95b-77722591c320
+		summarizeBy: sum
+		sourceColumn: Hantavirus_Positive
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hantavirus_Type
+		dataType: string
+		lineageTag: 869b43f2-871f-494d-97af-9d793bf6a76b
+		summarizeBy: none
+		sourceColumn: Hantavirus_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Symptoms.1'
+		dataType: string
+		lineageTag: 4c80b1a4-7489-4159-b83b-060edf349897
+		summarizeBy: none
+		sourceColumn: Symptoms.1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Symptoms.2'
+		dataType: string
+		lineageTag: 4dadc156-7f9b-44db-a1ad-0f62b1307b7b
+		summarizeBy: none
+		sourceColumn: Symptoms.2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Symptoms.3'
+		dataType: string
+		lineageTag: 535dd2f0-f6bd-4167-8ad7-944961df5283
+		summarizeBy: none
+		sourceColumn: Symptoms.3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Symptoms.4'
+		dataType: string
+		lineageTag: 18a5a102-9e85-4200-a966-b12d43f17988
+		summarizeBy: none
+		sourceColumn: Symptoms.4
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Symptoms.5'
+		dataType: string
+		lineageTag: 5bb049a8-f9d5-4266-a7e0-bf27baebd9b5
+		summarizeBy: none
+		sourceColumn: Symptoms.5
+
+		annotation SummarizationSetBy = Automatic
+
+	column Symptom_Count
+		dataType: int64
+		formatString: 0
+		lineageTag: 5655227e-f167-4fca-85e0-4049f3a2b2cd
+		summarizeBy: sum
+		sourceColumn: Symptom_Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column Exposure_Type
+		dataType: string
+		lineageTag: e4d8bc83-b63e-4e88-8680-e203a13863c7
+		summarizeBy: none
+		sourceColumn: Exposure_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sample_Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ccaa2d6d-99db-4290-a0fc-e11fc4a3cf37
+		summarizeBy: none
+		sourceColumn: Sample_Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Disease_Onset_Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b724bd88-d477-4e39-a8dc-c1ae467a4ada
+		summarizeBy: none
+		sourceColumn: Disease_Onset_Date
+
+		variation Variation
+			isDefault
+			relationship: aa314352-c791-4c5a-88a1-7d44579f418c
+			defaultHierarchy: LocalDateTable_ca82d097-ee56-482e-9298-69e78746cb9e.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WBC_Count_K/uL
+		dataType: double
+		lineageTag: 9a211377-6db8-4049-94ab-112dfcebe325
+		summarizeBy: sum
+		sourceColumn: WBC_Count_K/uL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Platelet_Count_K/uL
+		dataType: double
+		lineageTag: ebf84cdb-b5da-4a52-8466-64d5c9a31344
+		summarizeBy: sum
+		sourceColumn: Platelet_Count_K/uL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CRP_mg/L
+		dataType: double
+		lineageTag: d24207ed-1447-43ad-a4bc-43cf1dd1e5c3
+		summarizeBy: sum
+		sourceColumn: CRP_mg/L
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ALT_U/L
+		dataType: double
+		lineageTag: 70bc144e-a410-49fe-b831-ea30b00ef326
+		summarizeBy: sum
+		sourceColumn: ALT_U/L
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AST_U/L
+		dataType: double
+		lineageTag: 31558b59-0d2d-4896-bc3e-a2d354e20505
+		summarizeBy: sum
+		sourceColumn: AST_U/L
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BUN_mg/dL
+		dataType: double
+		lineageTag: b5e4d481-e442-4a49-8485-53a0cac0f574
+		summarizeBy: sum
+		sourceColumn: BUN_mg/dL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Creatinine_mg/dL
+		dataType: double
+		lineageTag: 91752b6b-43fd-49f9-9650-49f368121fd1
+		summarizeBy: sum
+		sourceColumn: Creatinine_mg/dL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Disease_Severity
+		dataType: string
+		lineageTag: 0d215fe5-8719-44bd-8071-429869376d7c
+		summarizeBy: none
+		sourceColumn: Disease_Severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column WBC_Platelet_Ratio
+		dataType: double
+		lineageTag: f3cff0fc-2fbd-41bf-a3bf-f1558ba566e6
+		summarizeBy: sum
+		sourceColumn: WBC_Platelet_Ratio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Creatinine_BUN_Ratio
+		dataType: double
+		lineageTag: 33b402cd-93ac-43c0-8de0-13c8c8e21bdb
+		summarizeBy: sum
+		sourceColumn: Creatinine_BUN_Ratio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Liver_Injury_Score
+		dataType: double
+		lineageTag: 54adc6aa-f034-4c34-ab06-5506b8156bb6
+		summarizeBy: sum
+		sourceColumn: Liver_Injury_Score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Immunological_Risk
+		dataType: string
+		lineageTag: c4e36f69-a375-4938-8b38-6c216b904c01
+		summarizeBy: none
+		sourceColumn: Immunological_Risk
+
+		annotation SummarizationSetBy = Automatic
+
+	column Renal_Risk
+		dataType: string
+		lineageTag: 9af71a3a-e289-4a12-aff0-e63f2b930c29
+		summarizeBy: none
+		sourceColumn: Renal_Risk
+
+		annotation SummarizationSetBy = Automatic
+
+	column Immunological_Risk_Score
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c9c7aaf-1698-43c7-9a30-48b4a333a70d
+		summarizeBy: sum
+		sourceColumn: Immunological_Risk_Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column Platelet_Count_Severity
+		dataType: string
+		lineageTag: 9933f6c4-241c-49bd-b55f-48ec2904f6e4
+		summarizeBy: none
+		sourceColumn: Platelet_Count_Severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Creatinine_Severity
+		dataType: string
+		lineageTag: 0b91d042-e53b-4bdd-853f-daef773dd275
+		summarizeBy: none
+		sourceColumn: Creatinine_Severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column BUN_Severity
+		dataType: string
+		lineageTag: 5818cd58-cd42-4300-9424-e14c6a6d483d
+		summarizeBy: none
+		sourceColumn: BUN_Severity
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Hantavirus = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\User\Desktop\BI2_ProjetoFinal_Hantavirus\data\hantavirus_detection_dataset.csv"),[Delimiter=",", Columns=24, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Patient_ID", type text}, {"Age", Int64.Type}, {"Gender", type text}, {"Region", type text}, {"Hantavirus_Positive", Int64.Type}, {"Hantavirus_Type", type text}, {"Symptoms", type text}, {"Symptom_Count", Int64.Type}, {"Exposure_Type", type text}, {"Sample_Date", type date}, {"Disease_Onset_Date", type text}, {"WBC_Count_K/uL", type number}, {"Platelet_Count_K/uL", type number}, {"CRP_mg/L", type number}, {"ALT_U/L", type number}, {"AST_U/L", type number}, {"BUN_mg/dL", type number}, {"Creatinine_mg/dL", type number}, {"Disease_Severity", type text}, {"WBC_Platelet_Ratio", type number}, {"Creatinine_BUN_Ratio", type number}, {"Liver_Injury_Score", type number}, {"Immunological_Risk", type text}, {"Renal_Risk", type text}}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Changed Type", "Symptoms", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), {"Symptoms.1", "Symptoms.2", "Symptoms.3", "Symptoms.4", "Symptoms.5"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Symptoms.1", type text}, {"Symptoms.2", type text}, {"Symptoms.3", type text}, {"Symptoms.4", type text}, {"Symptoms.5", type text}}),
+				    #"Replaced Errors" = Table.ReplaceErrorValues(#"Changed Type1", {{"Symptoms.1", null}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Replaced Errors","",null,Replacer.ReplaceValue,{"Symptoms.1"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Replaced Value",{{"Disease_Onset_Date", type date}}),
+				    #"Replaced Errors1" = Table.ReplaceErrorValues(#"Changed Type2", {{"Disease_Onset_Date", null}}),
+				    #"Added Conditional Column" = Table.AddColumn(#"Replaced Errors1", "Age_Group", each if [Age] < 18 then "Criança" else if [Age] < 35 then "Adulto Jovem" else if [Age] < 60 then "Adulto" else "Idoso"),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Added Conditional Column",{{"Age_Group", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type3",{"Age", "Gender", "Age_Group"}),
+				    #"Added Conditional Column1" = Table.AddColumn(#"Removed Columns", "Immunological_Risk_Score", each if Text.Contains([Immunological_Risk], "Low") then 0 else 1),
+				    #"Changed Type4" = Table.TransformColumnTypes(#"Added Conditional Column1",{{"Immunological_Risk_Score", Int64.Type}}),
+				    #"Added Conditional Column2" = Table.AddColumn(#"Changed Type4", "Pletelet_Count_Severity", each if [#"Platelet_Count_K/uL"] >= 100 then "Severe" else null),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Added Conditional Column2",{"Pletelet_Count_Severity"}),
+				    #"Added Conditional Column3" = Table.AddColumn(#"Removed Columns1", "Platelet_Count_Severity", each if [#"Platelet_Count_K/uL"] <= 100 then "Severe Risk" else null),
+				    #"Added Conditional Column4" = Table.AddColumn(#"Added Conditional Column3", "Creatinine_Severity", each if [#"Creatinine_mg/dL"] >= 1.4 then "Severe Risk" else null),
+				    #"Added Conditional Column5" = Table.AddColumn(#"Added Conditional Column4", "BUN_Severity", each if [#"BUN_mg/dL"] >= 23 then "Mild" else if [#"BUN_mg/dL"] >= 28 then "Moderate" else if [#"BUN_mg/dL"] >= 47 then "Severe" else null),
+				    #"Removed Columns2" = Table.RemoveColumns(#"Added Conditional Column5",{"Creatinine_Severity"}),
+				    #"Added Conditional Column6" = Table.AddColumn(#"Removed Columns2", "Creatinine_Severity", each if [#"Creatinine_mg/dL"] >= 3 then "Severe Risk" else null),
+				    #"Removed Columns3" = Table.RemoveColumns(#"Added Conditional Column6",{"Creatinine_Severity"}),
+				    #"Added Conditional Column7" = Table.AddColumn(#"Removed Columns3", "Creatinine_Severity", each if [#"Creatinine_mg/dL"] >= 2.5 then "Severe Risk" else null),
+				    #"Removed Columns4" = Table.RemoveColumns(#"Added Conditional Column7",{"BUN_Severity"}),
+				    #"Changed Type5" = Table.TransformColumnTypes(#"Removed Columns4",{{"Platelet_Count_Severity", type text}, {"Creatinine_Severity", type text}}),
+				    #"Added Conditional Column8" = Table.AddColumn(#"Changed Type5", "BUN_Severity", each if [#"BUN_mg/dL"] <= 23 then null else if [#"BUN_mg/dL"] <= 28 then "Mild" else if [#"BUN_mg/dL"] <= 47 then "Moderate" else "Severe"),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Added Conditional Column8",null,"Normal",Replacer.ReplaceValue,{"BUN_Severity"})
+				in
+				    #"Replaced Value1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
